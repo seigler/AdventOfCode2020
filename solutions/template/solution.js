@@ -12,7 +12,7 @@ async function run () {
 
 async function solveForFirstStar (input) {
   const solution = 'UNSOLVED'
-  report('Input:', input)
+  //  report('Input:', input);
   report('Solution 1:', solution)
 }
 
