@@ -20,30 +20,41 @@ async function run () {
 }
 
 async function solveForFirstStar (input) {
-  const solution = input.filter(
-    ({ num1, num2, letter, password }) => {
+  const solution = input.reduce(
+    (acc, { num1, num2, letter, password }) => {
       let count = 0
       for (let i = 0; i < password.length; i++) {
         if (password.charAt(i) === letter) {
           count++
           if (count > num2) {
-            return false
+            return acc
           }
         }
       }
-      return count >= num1
-    }
-  ).length
+      return acc + (
+        count >= num1
+          ? 1
+          : 0
+      )
+    }, 0
+  )
   report('Input:', input)
   report('Solution 1:', solution)
 }
 
 async function solveForSecondStar (input) {
-  const solution = input.filter(
-    ({ num1, num2, letter, password }) => {
-      return XOR(password.charAt(num1 - 1) === letter, password.charAt(num2 - 1) === letter)
-    }
-  ).length
+  const solution = input.reduce(
+    (acc, { num1, num2, letter, password }) => {
+      return acc + (
+        XOR(
+          password.charAt(num1 - 1) === letter,
+          password.charAt(num2 - 1) === letter
+        )
+          ? 1
+          : 0
+      )
+    }, 0
+  )
   report('Solution 2:', solution)
 }
 
