@@ -11,7 +11,7 @@ async function run () {
 }
 
 function yesses (group) {
-  return group.replace(/\s+/gm, '').split('').reduce((acc, cur) => acc.includes(cur) ? acc : [...acc, cur], [])
+  return [...new Set(group.replace(/\s+/gm, '').split(''))]
 }
 
 async function solveForFirstStar (input) {
