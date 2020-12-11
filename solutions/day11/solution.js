@@ -45,7 +45,7 @@ function step (input) {
   return next
 }
 
-function stabilize(input) {
+function stabilize (input) {
   // console.log('\nInput\n--------')
   // draw(input)
   let rounds = 1; let old; let fresh = input
@@ -61,7 +61,7 @@ function stabilize(input) {
 
 async function solveForFirstStar (input) {
   const stable = stabilize(input)
-  const filledSeats = stable.flat(2).filter(x => x=='#').length
+  const filledSeats = stable.flat(2).filter(x => x == '#').length
   report('Solution 1:', filledSeats)
 }
 
