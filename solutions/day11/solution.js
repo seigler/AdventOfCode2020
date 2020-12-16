@@ -11,11 +11,11 @@ async function run () {
   await solveForSecondStar(input)
 }
 
-function draw (input) {
-  for (const row of input) {
-    console.log(row.join(''))
-  }
-}
+// function draw (input) {
+//   for (const row of input) {
+//     console.log(row.join(''))
+//   }
+// }
 
 function neighbors (input, row, col) {
   let total = 0
@@ -48,20 +48,19 @@ function step (input) {
 function stabilize (input) {
   // console.log('\nInput\n--------')
   // draw(input)
-  let rounds = 1; let old; let fresh = input
+  let old; let fresh = input
   do {
     old = fresh
     fresh = step(old)
     // console.log(`\nRound ${rounds}\n--------`)
     // draw(fresh)
-    rounds++
   } while (JSON.stringify(old) !== JSON.stringify(fresh))
   return fresh
 }
 
 async function solveForFirstStar (input) {
   const stable = stabilize(input)
-  const filledSeats = stable.flat(2).filter(x => x == '#').length
+  const filledSeats = stable.flat(2).filter(x => x === '#').length
   report('Solution 1:', filledSeats)
 }
 
